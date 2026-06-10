@@ -1,0 +1,2 @@
+[functions.user-activity]
+verify_jwt = false
