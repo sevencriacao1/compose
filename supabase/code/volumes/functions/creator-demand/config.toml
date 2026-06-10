@@ -1,0 +1,2 @@
+[functions.creator-demand]
+verify_jwt = false

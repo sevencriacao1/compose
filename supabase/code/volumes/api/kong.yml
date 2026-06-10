@@ -272,6 +272,18 @@ services:
       #      - ::1
       #    deny: []
 
+  ## Public Studio manifest - keep PWA metadata outside dashboard basic auth
+  - name: dashboard-manifest
+    _comment: 'Studio manifest: /favicon/manifest.json -> http://studio:3000/favicon/manifest.json'
+    url: http://studio:3000/favicon/manifest.json
+    routes:
+      - name: dashboard-manifest
+        strip_path: true
+        paths:
+          - /favicon/manifest.json
+    plugins:
+      - name: cors
+
   ## Protected Dashboard - catch all remaining routes
   - name: dashboard
     _comment: 'Studio: /* -> http://studio:3000/*'
