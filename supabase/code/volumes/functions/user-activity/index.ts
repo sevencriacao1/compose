@@ -189,6 +189,9 @@ Deno.serve(async (req) => {
       if (action === 'end_session') {
         return jsonResponse({ ok: true }, 200, origin);
       }
+      if (action === 'heartbeat') {
+        return jsonResponse({ ok: false, code: 'session_ended' }, 200, origin);
+      }
       return jsonResponse({ error: 'Sessao encerrada.', code: 'session_ended' }, 409, origin);
     }
 
