@@ -93,6 +93,14 @@ Deno.serve(async (req) => {
     return new Response('ok', { headers: getCorsHeaders(origin) });
   }
 
+  if (req.method === 'GET') {
+    return jsonResponse({
+      ok: true,
+      service: 'user-activity',
+      methods: ['GET', 'POST', 'OPTIONS'],
+    }, 200, origin);
+  }
+
   if (req.method !== 'POST') {
     return jsonResponse({ error: 'Method not allowed' }, 405, origin);
   }
